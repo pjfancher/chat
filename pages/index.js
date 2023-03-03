@@ -1,6 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import axios from "axios";
@@ -13,7 +11,6 @@ export default function Home() {
     event.preventDefault();
     const msg = [{ role: "user", content: inputValue }];
 
-    console.log(msg);
     try {
       const response = await axios.post(
         "https://api.openai.com/v1/chat/completions",
@@ -43,16 +40,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div>
+        <div className="flex flex-wrap items-center gap-[15px] px-5">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="input">Enter some text:</label>
+            <label
+              className="text-[15px] font-medium leading-[35px]"
+              htmlFor="input"
+            >
+              Ask:
+            </label>
             <input
+              className="mx-4"
               id="input"
               type="text"
               value={inputValue}
               onChange={(event) => setInputValue(event.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              type="submit"
+            >
+              Submit
+            </button>
           </form>
           {responseData && (
             <div>
