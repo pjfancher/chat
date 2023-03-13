@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import axios from "axios";
+import Header from "@/components/header";
+import Options from "@/components/options";
 
 export default function Home() {
   const [inputValue, setInputValue] = useState("");
@@ -39,6 +41,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <main className={styles.main}>
         <div className="flex flex-wrap items-center gap-[15px] px-5">
           <form onSubmit={handleSubmit}>
@@ -61,6 +64,7 @@ export default function Home() {
             >
               Submit
             </button>
+            <Options />
           </form>
           {responseData && (
             <div>
